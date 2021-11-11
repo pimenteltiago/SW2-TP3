@@ -1,0 +1,62 @@
+﻿
+@{
+    ViewBag.Title = "viewBL";
+}
+
+<h2>viewBL</h2>
+
+<a href="~/Home/Index">Voltar a pagina inicial</a>
+
+</br>
+</br>
+
+<form action="/BL/Adiciona" method="post">
+
+    <div class="form-group">
+        <label for="numero">Numero:</label>
+        <input class="form-control" id="numero" name="bl.numero" />
+    </div>
+    <div class="form-group">
+        <label for="consignee">Consignee:</label>
+        <input class="form-control" id="consignee" name="bl.consignee" />
+    </div>
+    <div class="form-group">
+        <label for="navio">Navio:</label>
+        <input class="form-control" id="navio" name="bl.navio" />
+    </div>
+
+    <input type="submit" class="btn btn-primary" />
+</form>
+
+</br>
+</br>
+
+<h2>Registros</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Numero</th>
+            <th scope="col">Consignee</th>
+            <th scope="col">Navio</th>
+            <th scope="col">Ações</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var bl in ViewBag.bl) {
+        <form action="Editar" method="POST">
+            <tr>
+                <td><input type="text" size="5" value="@bl.id"/></td>
+                <td><input type="text" size="5" value="@bl.numero"/></td>
+                <td><input type="text" size="5" value="@bl.consignee"/></td>
+                <td><input type="text" size="5" value="@bl.navio"/></td>
+                <td>
+                    <button type="submit" class="btn btn-secondary" name="editar" id="editar">Editar</button>
+                    <button type="submit" class="btn btn-danger" name="deletar" id="deletar" formaction="Deletar">Deletar</button>
+                </td>
+            </tr>
+        </form>
+        }
+    </tbody>
+    <table>

@@ -1,0 +1,68 @@
+﻿
+@{
+    ViewBag.Title = "viewContainer";
+}
+
+<h2>viewContainer</h2>
+
+<a href="~/Home/Index">Voltar a pagina inicial</a>
+
+</br>
+</br>
+
+<form action="/Container/Adiciona" method="post">
+
+    <div class="form-group">
+        <label for="numero">Numero:</label>
+        <input class="form-control" id="numero" name="container.numero" />
+    </div>
+    <div class="form-group">
+        <label for="tipo">Tipo:</label>
+        <input class="form-control" id="tipo" name="container.tipo" />
+    </div>
+    <div class="form-group">
+        <label for="tamanho">Tamanho:</label>
+        <input class="form-control" id="tamanho" name="container.tamanho" />
+    </div>
+    <div class="form-group">
+        <label for="blid">BL id:</label>
+        <input class="form-control" id="blid" name="container.id_bl" />
+    </div>
+
+    <input type="submit" class="btn btn-primary" />
+</form>
+
+</br>
+</br>
+
+<h2>Registros</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Numero</th>
+            <th scope="col">Tipo</th>
+            <th scope="col">Tamanho</th>
+            <th scope="col">BL id</th>
+            <th scope="col">Ações</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var container in ViewBag.containers) {
+            <form action="Editar" method="POST">
+                <tr>
+                    <td><input type="text" size="5" value="@container.id"/></td>
+                    <td><input type="text" size="5" value="@container.numero"/></td>
+                    <td><input type="text" size="5" value="@container.tipo"/></td>
+                    <td><input type="text" size="5" value="@container.tamanho"/></td>
+                    <td><input type="text" size="5" value="@container.id_bl"/></td>
+                    <td>
+                        <button type="submit" class="btn btn-secondary" name="editar" id="editar">Editar</button>
+                        <button type="submit" class="btn btn-danger" name="deletar" id="deletar" formaction="Deletar">Deletar</button>
+                    </td>
+                </tr>
+            </form>
+         }
+        </tbody>
+    <table>
